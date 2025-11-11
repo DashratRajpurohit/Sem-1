@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yearn Governance Forum</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #0657F9;
+            --dark: #1a1d2b;
+            --darker: #0f111a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --border: #2d3748;
+            --green: #10B981;
+            --red: #EF4444;
+            --yellow: #F59E0B;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--light);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Discussion List */
+        .discussion-list {
+            background-color: var(--dark);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .discussion-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .discussion-header h2 {
+            font-size: 20px;
+        }
+
+        .discussion-item {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.3s;
+        }
+
+        .discussion-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .discussion-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .discussion-title .status {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .status-rejected {
+            color: var(--red);
+        }
+
+        .status-pending {
+            color: var(--yellow);
+        }
+
+        .status-approved {
+            color: var(--green);
+        }
+
+        .discussion-category {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .auth-card {
+            background-color: var(--dark);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .auth-card h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .auth-buttons-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .topics-table {
+            background-color: var(--dark);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .topics-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+        }
+
+        .topics-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .topics-table th, .topics-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .topics-table th {
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .topics-table td {
+            font-size: 14px;
+        }
+
+        .topic-title {
+            font-weight: 600;
+        }
+
+        .topic-category {
+            color: var(--gray);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .topic-meta {
+            color: var(--gray);
+            text-align: center;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background-color: var(--border);
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--gray);
+        }
+        .logo-text a{
+                text-decoration: none;
+                color: aliceblue;
+            }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="" alt="">
+                    <span class="logo-text"><a href="index.html">Yearn Governance</a></span>
+                </div>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Log in</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+    <div class="container">
+        <div class="main-content">
+           
+            <div class="discussion-list">
+                <div class="discussion-header">
+                    <h2>Yearn Improvement Proposals</h2>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status status-rejected">❌</span>
+                        YIP-88: Governance Overhaul: Incentives
+                    </div>
+                    <div class="discussion-category">Protocol and Governance = yip</div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status status-pending">❍</span>
+                        YIP-88: Governance Overhaul: stYFI
+                    </div>
+                    <div class="discussion-category">Protocol and Governance = yip</div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status status-approved">❎</span>
+                        YIP-88: Governance Overhaul: DAO Restructuring
+                    </div>
+                    <div class="discussion-category">Protocol and Governance = yip</div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status">•</span>
+                        YIP-83: Beam BIP YIP #2
+                    </div>
+                    <div class="discussion-category">Other Products (Labs)</div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status">•</span>
+                        How can Team help the USDA! Mochi Community?
+                    </div>
+                    <div class="discussion-category">Ideas</div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status">•</span>
+                        YIP-XX Convert Ychad.ETH Into a BORG
+                    </div>
+                    <div class="discussion-category">Protocol and Governance</div>
+                </div>
+                
+                <div class="discussion-item">
+                    <div class="discussion-title">
+                        <span class="status">•</span>
+                        YIP-87 Convert Ychad.ETH Into a BORG
+                    </div>
+                    <div class="discussion-category">Protocol and Governance</div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Auth Card -->
+                <div class="auth-card">
+                    <h3>Join the Discussion</h3>
+                    <div class="auth-buttons-vertical">
+                        <button class="btn btn-primary">Sign Up</button>
+                        <button class="btn btn-outline">Log in</button>
+                    </div>
+                </div>
+                
+                <!-- Topics Table -->
+                <div class="topics-table">
+                    <div class="topics-header">Recent Activity</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Replies</th>
+                                <th>Views</th>
+                                <th>Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">yVest S02 Tiers & Allocation Criteria</div>
+                                    <div class="topic-category">Finance</div>
+                                </td>
+                                <td class="topic-meta">1</td>
+                                <td class="topic-meta">84</td>
+                                <td class="topic-meta">13d</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">YIP-88: Governance Overhaul: ❌ Incentives</div>
+                                    <div class="topic-category">Protocol and Governance = yip</div>
+                                </td>
+                                <td class="topic-meta">5</td>
+                                <td class="topic-meta">273</td>
+                                <td class="topic-meta">14d</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">YIP-88: Governance Overhaul: ❍ stYFI</div>
+                                    <div class="topic-category">Protocol and Governance = yip</div>
+                                </td>
+                                <td class="topic-meta">12</td>
+                                <td class="topic-meta">431</td>
+                                <td class="topic-meta">14d</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">YIP-88: Governance Overhaul: ❎ DAO Restructuring</div>
+                                    <div class="topic-category">Protocol and Governance = yip</div>
+                                </td>
+                                <td class="topic-meta">6</td>
+                                <td class="topic-meta">365</td>
+                                <td class="topic-meta">14d</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">Other Products (Labs)</div>
+                                </td>
+                                <td class="topic-meta">3</td>
+                                <td class="topic-meta">180</td>
+                                <td class="topic-meta">14d</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">Ideas</div>
+                                </td>
+                                <td class="topic-meta">2</td>
+                                <td class="topic-meta">55</td>
+                                <td class="topic-meta">21 Sep</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="topic-title">YIP-XX Convert Ychad.ETH Into a BORG</div>
+                                    <div class="topic-category">Protocol and Governance</div>
+                                </td>
+                                <td class="topic-meta">10</td>
+                                <td class="topic-meta">276</td>
+                                <td class="topic-meta">14 Aug</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Yearn Finance Governance Forum &copy; 2025</p>
+        </div>
+    </footer>
+</body>
+</html>

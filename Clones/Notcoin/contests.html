@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notcoin Contest</title>
+  <link rel="icon" href="https://cdn.joincommunity.xyz/explore/icons/notcoin-logo-rounded.svg" type="image/jpg">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 2vw;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.2vw;
+    }
+
+    .main {
+      margin-top: 10%;
+    }
+
+    .main h2 {
+      color: blue;
+      font-size: 8vw;
+      font-weight: 900;
+    }
+
+    
+    .faces {
+      display: flex;
+      justify-content: center;
+      gap: 150px;
+      margin-top: 5%;
+    }
+
+    .face {
+      text-align: center;
+      color: blue;
+      font-weight: bold;
+      font-size: 3vw;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .face:hover {
+      transform: scale(1.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 255, 0.25);
+    }
+
+    .bracket {
+      font-size: 6vw;
+      vertical-align: middle;
+    }
+
+    .eyes {
+      display: inline-flex;
+      gap: 20px;
+      vertical-align: middle;
+    }
+
+    .eye {
+      width: 2vw;
+      height: 1.5vw;
+      background: blue;
+    }
+
+    .eye.top {
+      border-radius: 50% 50% 0 0;
+    }
+
+    .eye.bottom {
+      border-radius: 0 0 50% 50%;
+    }
+
+    .face p {
+      margin-top: 15px;
+      font-size: 1.8vw;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h1 style="color: rgb(189, 189, 189); font-size: 1.5vw;">Not Contest</h1>
+    <a href="">Dev</a>
+    <a href="">AI Games</a>
+    <a href="">Trade</a>
+    <a href="">Research</a>
+    <a href="">Stickers</a>
+    <a href="">Art</a>
+    <a href="">Game</a>
+    <a style="color: blue; margin-left: 10%;" href="index.html">Notcoin</a>
+  </nav>
+
+  <div class="main">
+    <h2>Dev contest results</h2>
+
+    <div class="faces">
+      
+      <div class="face">
+        <span class="bracket">{</span>
+        <div class="eyes">
+          <div class="eye top"></div>
+          <div class="eye top"></div>
+        </div>
+        <span class="bracket">}</span>
+        <p>Front</p>
+      </div>
+
+     
+      <div class="face">
+        <span class="bracket">{</span>
+        <div class="eyes">
+          <div class="eye bottom"></div>
+          <div class="eye bottom"></div>
+        </div>
+        <span class="bracket">}</span>
+        <p>Back</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

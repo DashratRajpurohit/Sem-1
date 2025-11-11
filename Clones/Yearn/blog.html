@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>yearn — Blog</title>
+    <style>
+      :root {
+        --bg: #202021; /* tweak to match site blue */
+        --text: #0b0b0b;
+        --muted: #90a0bf;
+        --card: #fafcff;
+        --max: 1150px;
+        --radius: 12px;
+        --accent: #5e62f5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        margin: 0;
+        color: var(--text);
+        background: linear-gradient(180deg, #111111 0%, #12337b 100%);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.45;
+      }
+
+      
+      .container {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      
+      .site-header {
+        background: transparent;
+        padding: 18px 0;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* position: fixed; */
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        text-decoration: none;
+      }
+      .brand img {
+        border-radius: 8px;
+      }
+      .brand-title {
+        font-weight: 700;
+        text-transform: lowercase;
+        color: #fff;
+        font-size: 18px;
+      }
+
+     
+      .nav {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .nav-link {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .btn {
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 8px 14px;
+        border: 0;
+        font-weight: 600;
+      }
+      .btn.ghost {
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: white;
+      }
+      .btn.outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: white;
+      }
+
+      
+      .hero {
+        padding: 60px 0 40px;
+      }
+      .hero-inner {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .hero-left {
+        color: white;
+        max-width: 720px;
+      }
+      .muted {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .hero-title {
+        font-size: 72px;
+        margin: 6px 0;
+        line-height: 0.95;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+      .hero-sub {
+        font-size: 18px;
+        margin: 8px 0 18px;
+        color: rgba(255, 255, 255, 0.86);
+      }
+      .hero-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      
+      .stats-card {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 18px;
+        border-radius: 12px;
+        color: white;
+        text-align: center;
+        min-width: 160px;
+      }
+      .stat-number {
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+
+      
+      .posts.container {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 30px;
+        padding: 30px 0 80px;
+        align-items: start;
+      }
+
+      
+      .posts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      
+      .post-card {
+        display: flex;
+        gap: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 18px;
+        border-radius: 10px;
+        align-items: flex-start;
+      }
+      .post-thumb {
+        width: 150px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .post-meta {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+      .post-title {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+      .post-excerpt {
+        color: rgba(255, 255, 255, 0.86);
+        margin: 0 0 10px;
+      }
+      .read-more {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: relative;
+      }
+      .subscribe-box {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 18px;
+        border-radius: 10px;
+        color: white;
+      }
+      .subscribe-form {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .subscribe-form input[type="email"] {
+        flex: 1;
+        padding: 10px;
+        border-radius: 8px;
+        border: 0;
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+      }
+      .subscribe-form button {
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 0;
+        background: var(--accent);
+        color: white;
+      }
+
+      
+      .site-footer {
+        padding: 28px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      
+      @media (max-width: 980px) {
+        .hero-title {
+          font-size: 48px;
+        }
+        .posts.container {
+          grid-template-columns: 1fr;
+          padding: 18px 0;
+        }
+        .hero-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+        }
+        .hero-right {
+          order: 3;
+          width: 100%;
+        }
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+        .post-card {
+          flex-direction: column;
+        }
+        .post-thumb {
+          width: 100%;
+          height: 200px;
+        }
+      }
+    </style>
+
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#">
+         
+          <img src="https://res-console.cloudinary.com/dyp6zbyjd/thumbnails/v1/image/upload/v1762451402/YmZiN2M3NGYtODY5OC00MTMzLWJhMTgtMzQ0MmY4YTgxZGM4X3B3MnBrdA==/preview" alt="Yearn" width="36" height="36" />
+          <span class="brand-title">yearn</span>
+        </a>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Subscribe</a>
+          <a href="#" class="nav-link">About</a>
+          <button class="btn ghost">Sign in</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-left">
+            <small class="muted">Written by yearn</small>
+            <h1 class="hero-title">Yearn</h1>
+            <p class="hero-sub">
+              Research, releases, and governance — stories from Yearn’s teams
+              and community.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn primary">Subscribe</button>
+              <button class="btn outline">Start writing</button>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="stats-card">
+              <strong>Posts</strong>
+              <div class="stat-number">6</div>
+              <small class="muted">Subscribers 2.8k+</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
+      <section class="posts container">
+        <div class="posts-grid">
+          
+          <article class="post-card">
+            <img
+              class="post-thumb"
+              src="https://img.paragraph.com/cdn-cgi/image/format=auto,width=640,quality=85/https://storage.googleapis.com/papyrus_images/8261c3df9568b4392c7c9428b7cdb1d974bca0e669ac88ccc18eb35948a31a48.jpg"
+              alt="Post thumbnail"
+            />
+            <div class="post-body">
+              <div class="post-meta">yearn • Oct 30</div>
+              <h2 class="post-title">Upgrading the Yield Machine</h2>
+              <p class="post-excerpt">
+                Yearn has done the hard, messy work of growing up. It has cut
+                costs, re-grown TVL, and proven it can govern itself...
+              </p>
+              <a class="read-more" href="#">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <img class="post-thumb" src="https://img.paragraph.com/cdn-cgi/image/format=auto,width=640,quality=85/https://storage.googleapis.com/papyrus_images/4b7cee8ef47b97944d00316836cb0b05047db47bc7f7df99cb701b7c5a6e6f06.jpg" alt="" />
+            <div class="post-body">
+              <div class="post-meta">yearn • Oct 24</div>
+              <h2 class="post-title">YB and Future Airdrop Distribution</h2>
+              <p class="post-excerpt">
+                Following the Yield Basis (YB) token airdrop to veCRV voters,
+                yLockers have deployed the infrastructure to distribute
+                tokens...
+              </p>
+              <a class="read-more" href="#">Read more →</a>
+            </div>
+          </article>
+          <article class="post-card">
+            <img class="post-thumb" src="https://img.paragraph.com/cdn-cgi/image/format=auto,width=1080,quality=85/https://storage.googleapis.com/papyrus_images/2138088bdae0f070850005391366c2ce.png" alt="" />
+            <div class="post-body">
+              <div class="post-meta">yearn • Oct 24</div>
+              <h2 class="post-title">Everything Must go</h2>
+              <p class="post-excerpt">
+                Participating in Yearn Oracle-Free & Permissionless Dutch Auctions for fun and profit
+              </p>
+              <a class="read-more" href="#">Read more →</a>
+            </div>
+          </article>
+
+          
+        </div>
+
+        
+        <aside class="sidebar">
+          <div class="subscribe-box">
+            <h3>Subscribe</h3>
+            <p class="muted">Get new posts delivered to your inbox.</p>
+            <form class="subscribe-form" action="#" method="GET">
+              <input
+                name="email"
+                type="email"
+                placeholder="email@example.com"
+                required
+              />
+              <button class="btn primary" type="submit">Subscribe</button>
+            </form>
+            <small class="muted">Subscribers 2.8k+</small>
+          </div>
+
+          <div class="links-box">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="#">Privacy policy</a></li>
+              <li><a href="#">Terms of use</a></li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> yearn</div>
+        <div class="muted">Built with Paragraph</div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

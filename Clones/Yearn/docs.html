@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+        }
+        html, body{
+           height: 100%;
+           width: 100%;
+           padding: 25px;
+           background-color: rgb(36, 36, 36);
+           font-family: "Inter", sans-serif;
+           color: aliceblue;
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+        }
+        .navleft{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logo{
+            overflow: hidden;
+            width: 3vw;
+            height: 3vw;
+            border-radius: 50px;
+        }
+        .logo img{
+            width: 100%;
+        }
+        .disp{
+            display: none;
+            font-size: 1.5em;
+        }
+        .nav-item a{
+            text-decoration: none;
+            color: aliceblue;
+            font-size: 1.5em;
+        }
+        .nav-item a:hover{
+            color: rgb(68, 68, 253);
+        }
+        .navright{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .git{
+            width: 2.5vw;
+            height: 2.5vw;
+        }
+        .search input{
+            background-color: black;
+            border: 2px solid gray;
+            height: 2.5vw;
+            border-radius: 20px;
+            width: 12vw;
+        }
+        .main{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 50px;
+            
+        }
+        .img1{
+            /* border: 2px solid white; */
+            width: 25%;
+            height: 80vh;
+            background-image: url(https://docs.yearn.fi/img/landing-page/alice-banner-2.png);
+            background-repeat:no-repeat ;
+            background-size: cover;
+            position: relative;
+        }
+        .img2{
+            /* border: 2px solid white; */
+            width: 25%;
+            height: 80vh;
+            background-image: url(https://docs.yearn.fi/img/landing-page/pixie-banner-grad-flower.png);
+            background-repeat:no-repeat ;
+            background-size: cover;
+            position: relative;
+        }
+        .img3{
+            /* border: 2px solid white; */
+            width: 25%;
+            height: 80vh;
+            background-image: url(https://docs.yearn.fi/img/landing-page/witchy-banner-grad2.png);
+            background-repeat:no-repeat ;
+            background-size: cover;
+            position: relative;
+        }
+        .img1 :hover{
+            filter: blur();
+            cursor: pointer;
+        }
+
+        .top{
+            position: absolute;
+            top: 50px;
+            left:40px;
+        }
+        .bottom{
+            font-size: 3em;
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+        }
+        @media (max-width:950px) {
+            .disp{
+                 display: block;
+                 font-size: 1em;
+            }
+
+            .disp a{
+            text-decoration: none;
+            color: aliceblue;
+            
+        }
+            .disp a:hover{
+            color: rgb(68, 68, 253);
+            }
+            .nav-item{
+                display: none;
+            }
+            .bottom{
+                font-size: 2em;
+            }
+            .top{
+                font-size: .6em;
+            }
+        }
+
+        @media (max-width: 705px){
+            .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin-top: 50px;
+            align-items: center;
+            }
+            .logo{
+            overflow: hidden;
+            width: 4.5vw;
+            height: 4.5vw;
+            border-radius: 50px;
+        }
+
+            .img1{
+            /* border: 2px solid white; */
+            width: 80%;
+            height: 40vh;
+            background-image: url(https://docs.yearn.fi/img/landing-page/alice-banner-2.png);
+            background-repeat:no-repeat ;
+            background-size: cover;
+            position: relative;
+            }
+             .img2{
+            /* border: 2px solid white; */
+            width: 80%;
+            height: 40vh;
+            background-image: url(https://docs.yearn.fi/img/landing-page/pixie-banner-grad-flower.png);
+            background-repeat:no-repeat ;
+            background-size: cover;
+            position: relative;
+        }
+             .img3{
+            /* border: 2px solid white; */
+            width: 80%;
+            height: 40vh;
+            background-image: url(https://docs.yearn.fi/img/landing-page/witchy-banner-grad2.png);
+            background-repeat:no-repeat ;
+            background-size: cover;
+            position: relative;
+        }
+            .bottom{
+                font-size: 2em;
+            }
+             .top{
+                font-size: 1em;
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navleft">
+            <div class="logo"><a href="index.html"><img src="https://res-console.cloudinary.com/dyp6zbyjd/thumbnails/v1/image/upload/v1762451402/YmZiN2M3NGYtODY5OC00MTMzLWJhMTgtMzQ0MmY4YTgxZGM4X3B3MnBrdA==/preview" alt=""></a></div>
+            <div class="disp"><a href="index.html">Yearn Docs</a></div>
+            <div class="nav-item"><a href="#">User Docs</a></div>
+            <div class="nav-item"><a href="#">Dev Docs</a></div>
+            <div class="nav-item"><a href="#">DAO Docs</a></div>
+        </div>
+        <div class="navright">
+            <div class="nav-item"><a href="#">Blog</a></div>
+            <div class="nav-item"><a href="#">Community</a></div>
+            <div class="git"><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEyIC4yOTdjLTYuNjMgMC0xMiA1LjM3My0xMiAxMiAwIDUuMzAzIDMuNDM4IDkuOCA4LjIwNSAxMS4zODUuNi4xMTMuODItLjI1OC44Mi0uNTc3IDAtLjI4NS0uMDEtMS4wNC0uMDE1LTIuMDQtMy4zMzguNzI0LTQuMDQyLTEuNjEtNC4wNDItMS42MUM0LjQyMiAxOC4wNyAzLjYzMyAxNy43IDMuNjMzIDE3LjdjLTEuMDg3LS43NDQuMDg0LS43MjkuMDg0LS43MjkgMS4yMDUuMDg0IDEuODM4IDEuMjM2IDEuODM4IDEuMjM2IDEuMDcgMS44MzUgMi44MDkgMS4zMDUgMy40OTUuOTk4LjEwOC0uNzc2LjQxNy0xLjMwNS43Ni0xLjYwNS0yLjY2NS0uMy01LjQ2Ni0xLjMzMi01LjQ2Ni01LjkzIDAtMS4zMS40NjUtMi4zOCAxLjIzNS0zLjIyLS4xMzUtLjMwMy0uNTQtMS41MjMuMTA1LTMuMTc2IDAgMCAxLjAwNS0uMzIyIDMuMyAxLjIzLjk2LS4yNjcgMS45OC0uMzk5IDMtLjQwNSAxLjAyLjAwNiAyLjA0LjEzOCAzIC40MDUgMi4yOC0xLjU1MiAzLjI4NS0xLjIzIDMuMjg1LTEuMjMuNjQ1IDEuNjUzLjI0IDIuODczLjEyIDMuMTc2Ljc2NS44NCAxLjIzIDEuOTEgMS4yMyAzLjIyIDAgNC42MS0yLjgwNSA1LjYyNS01LjQ3NSA1LjkyLjQyLjM2LjgxIDEuMDk2LjgxIDIuMjIgMCAxLjYwNi0uMDE1IDIuODk2LS4wMTUgMy4yODYgMCAuMzE1LjIxLjY5LjgyNS41N0MyMC41NjUgMjIuMDkyIDI0IDE3LjU5MiAyNCAxMi4yOTdjMC02LjYyNy01LjM3My0xMi0xMi0xMiIvPgo8L3N2Zz4=" alt=""></div>
+            
+            
+            <div class="git"><img src="data:image/svg+xml;charset=utf-8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDM1OS43IDM1OS43Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsgZmlsbDogIzAwMDsgc3Ryb2tlLXdpZHRoOiAwcHg7IH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxNC41LDEzOC4zbC00Ni42LDQ1LjZjMi42LDguMywzLjksMTcuMSwzLjksMjYsMCwyNC05LjYsNDYuNi0yNyw2My42LTE3LjQsMTctNDAuNSwyNi4zLTY1LjEsMjYuM3MtNDcuNy05LjQtNjUuMS0yNi4zYy0xNy40LTE3LTI3LTM5LjYtMjctNjMuNnMxLjMtMTcuNywzLjktMjZsLTQ2LjctNDUuNmMtMTEuOCwyMS4zLTE4LjYsNDUuNy0xOC42LDcxLjYsMCw4Mi44LDY4LjcsMTQ5LjgsMTUzLjQsMTQ5LjhzMTUzLjQtNjcuMSwxNTMuNC0xNDkuOC02LjctNTAuMy0xOC42LTcxLjZoMFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTQ5LjEgMjM5LjggMjEwLjQgMjM5LjggMjEwLjQgMTQ0LjUgMzE0LjkgNDIuNCAyNzEuNSAwIDE3OS44IDg5LjYgODggMCA0NC42IDQyLjQgMTQ5LjEgMTQ0LjQgMTQ5LjEgMjM5LjgiLz4KPC9zdmc+" alt=""></div>
+
+            <div class="search"><input type="text" placeholder="     Search"></div>
+
+         </div>  
+
+    </div>
+
+    <div class="main">
+
+            <div class="img1">
+                <div class="top">
+                    <h1>Start your Yearn journey.</h1>
+                    <br>
+                    <p>Everythig you need to use Yearn</p>
+                </div>
+                <div class="bottom">
+                    <h2>User Docs</h2>
+                </div>
+            </div>
+
+            <div class="img2">
+                 <div class="top">
+                    <h1>Build the future of finance.</h1>
+                    <br>
+                    <p>Everythig you need to build on Yearn</p>
+                </div>
+                <div class="bottom">
+                    <h2>Dev Docs</h2>
+                </div>
+            </div>
+
+            <div class="img3">
+                 <div class="top">
+                    <h1>Tame the decent ralized beast.</h1>
+                    <br>
+                    <p>Everythig you need to govern Yearn</p>
+                </div>
+                <div class="bottom">
+                    <h2>DAO Docs</h2>
+                </div>
+            </div>
+
+    </div>
+
+</body>
+</html>

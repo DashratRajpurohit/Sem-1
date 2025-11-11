@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Racing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 40px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ferrari-logo {
+            width: 40px;
+            height: 50px;
+            margin-bottom: 50px;
+        }
+
+        .racing-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .menu-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+
+        .menu-link:hover {
+            color: #dc0000;
+            padding-left: 10px;
+        }
+
+        .menu-link.has-submenu::after {
+            content: '›';
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-link.disabled {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .image-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .image-fade-out {
+            opacity: 0;
+        }
+
+        .arrow-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="close-btn"><a style="color: #fff; text-decoration: none;" href="glm.html">✕</a></div>
+            
+            <div class="logo"><img src="https://cdn.ferrari.com/cms/network/media/img/resize/68e68315127a350021db9b68?width=1040&height=585" alt="" width="15%" ></div>
+
+            <div class="racing-label">SPORTS CARS</div>
+
+            <ul class="menu">
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/64b6aace42d0770010df752a-menu-new-asset-sportscars-yourferrari-resize?width=975&height=1080">YOUR FERRARI</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/68c02c306c46d300212f0fe9?width=1040&height=585">OWNERS</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link disabled" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/68c02d502dafb10021dd65b2-ferrari-849-testarossa-spider-figurino-menu?width=1040&height=585">FERRARI CLASSICHE</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/649c2cbdff73dc002475192b-menu-past-models-2023-la%20ferrari-aperta-port?width=975&height=1080">PRE-OWNED</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/68108e03d208cb002173ba64?width=1040&height=585">DEALERS</a>
+                </li>
+            </ul>
+
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/66342fb69617e200108db366-ferrari-12cilindri-spider-superheader-menu?width=1040&height=585">Range</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/649ecb27a3933d0095d12044-ferrari-models-menu-2023-cards-monza-sp2?width=1040&height=585">SF-25</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/678e37386743270010529334?width=1040&height=585">Team</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=1600">News</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/649ec8ea437d870023cf534f-ferrari-models-menu-2023-cards-ferrari-roma-spider?width=1040&height=585">Races</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/68fd09175c490c001f922621?width=530&height=597">Partners</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/678e3737a5c0320011e770c8-ferrari-models-menu-2023-cards-sf90-xx-spider-scont?width=1040&height=585">Hospitality</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/649ec924e4a85f0089b49318-ferrari-models-menu-2023-cards-812-competizione?width=1040&height=585">Media Galleries</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/5da6e1ef96db09742e452f9d-ferrari-125-s-1947-intro-mob?width=768&height=1024">History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="https://cdn.ferrari.com/cms/network/media/img/resize/6910fea9b4eb970021c8ded0-braz-gp-sunday-gtw2?width=530&height=597" alt="Ferrari Pit Stop" class="main-image" id="mainImage">
+        </div>
+    </div>
+
+    <script>
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const mainImage = document.getElementById('mainImage');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const newImageUrl = this.getAttribute('data-image');
+                
+                if (newImageUrl) {
+                    mainImage.classList.add('image-fade-out');
+                    
+                    setTimeout(() => {
+                        mainImage.src = newImageUrl;
+                        mainImage.classList.remove('image-fade-out');
+                    }, 250);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Racing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 40px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ferrari-logo {
+            width: 40px;
+            height: 50px;
+            margin-bottom: 50px;
+        }
+
+        .racing-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .menu-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+
+        .menu-link:hover {
+            color: #dc0000;
+            padding-left: 10px;
+        }
+
+        .menu-link.has-submenu::after {
+            content: '›';
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-link.disabled {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .image-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .image-fade-out {
+            opacity: 0;
+        }
+
+        .arrow-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="close-btn"><a style="color: #fff; text-decoration: none;" href="glm.html">✕</a></div>
+            
+            <div class="logo"><img src="https://res.cloudinary.com/dyp6zbyjd/image/upload/v1762517805/34c111fb-a714-4a81-a287-8341b5a39e37_ponxfq.png" alt="" width="15%" ></div>
+
+            <div class="racing-label">RACING</div>
+
+            <ul class="menu">
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/67698e9c1570fd0010b77417-superheader-scuderia-desk?width=975&height=1080">Formula 1</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/68663b388b64380021dca178?width=975&height=1080">Endurance</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link disabled" data-image="https://cdn.ferrari.com/cms/network/media/img/resize/67ced2cad12cab001f5ef960-2025-ferrari-sfda-header-por-v267ced2cad12cab001f5ef960-2025-ferrari-sfda-header-por-v2?width=975&height=1080">Hypersail</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://images.unsplash.com/photo-1552519507-d9a6fa1ad697?w=1600">Esports</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link has-submenu" data-image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600">Driver Academy</a>
+                </li>
+            </ul>
+
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=1600">Home</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1558980664-1db506751c6c?w=1600">SF-25</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link has-submenu" data-image="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1600">Team</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=1600">News</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1612825173281-9a193378527e?w=1600">Races</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1551361415-69c87624334f?w=1600">Partners</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" data-image="https://images.unsplash.com/photo-1595475207225-428b62bda831?w=1600">Hospitality</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link has-submenu" data-image="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=1600">Media Galleries</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link has-submenu" data-image="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600">History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="https://cdn.ferrari.com/cms/network/media/img/resize/649c429d437d870023cf51c5-ferrari-esports-team-header-menu-land?width=975&height=1080" alt="Ferrari Pit Stop" class="main-image" id="mainImage">
+        </div>
+    </div>
+
+    <script>
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const mainImage = document.getElementById('mainImage');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const newImageUrl = this.getAttribute('data-image');
+                
+                if (newImageUrl) {
+                    mainImage.classList.add('image-fade-out');
+                    
+                    setTimeout(() => {
+                        mainImage.src = newImageUrl;
+                        mainImage.classList.remove('image-fade-out');
+                    }, 250);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
