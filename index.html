@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Assignments & Projects Directory</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5f6fa;
+            --text-color: #2c3e50;
+            --table-header-bg: #34495e;
+            --table-header-text: #ffffff;
+            --hover-color: #e8f0fe;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 40px;
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p.subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.005);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .cat-level1 { background-color: #d1f2eb; color: #148f77; }
+        .cat-level2 { background-color: #fadbd8; color: #b03a2e; }
+        .cat-misc { background-color: #e8daef; color: #6c3483; }
+
+        @media screen and (max-width: 600px) {
+            body { padding: 10px; }
+            th, td { padding: 10px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>My All Sem-1 Projects</h1>
+            <p class="subtitle">A collection of assignments and web projects</p>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>HTML-Css</th>
+                    <th>Topic</th>
+                    <th>Links</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <td><span class="category-badge cat-level2">HTML</span></td>
+                    <td>Assignments</td>
+                    <td><a href="HTML-Assignments/Index.html" class="btn" target="_blank">Open Project</a></td>
+                </tr>
+                <tr>
+                    <td><span class="category-badge cat-level2">CSS</span></td>
+                    <td>Assignments</td>
+                    <td><a href="CSS/index.html" class="btn" target="_blank">Open Project</a></td>
+                </tr>
+                <tr>
+                    <td><span class="category-badge cat-level2">Clones</span></td>
+                    <td>Websites Clones</td>
+                    <td><a href="Clones/index.html" class="btn" target="_blank">Open Project</a></td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
