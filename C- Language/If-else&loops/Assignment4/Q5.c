@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-//  Q5   Write a program to input two floats representing coordinates (x, y) and determine the distance from origin:
+  Q5   Write a program to input two floats representing coordinates (x, y) and determine the distance from origin:
 
 // Distance <= 5: print "Close"
 // Distance between 5 and 15: print "Medium"
@@ -24,4 +24,5 @@ else{
 
 
     return 0;
+
 }
