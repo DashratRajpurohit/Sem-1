@@ -9,10 +9,11 @@ int a,b,c;
 scanf("%d %d %d",&a,&b,&c);
 int d=a*b*c;
 if(d%6==0 && d%9!=0){
-    printf("spacil");
+    printf("spacil ....");
 }
 else{
-    printf("normal");
+    printf("normal ....");
 }
 return 0;
+
     }
